@@ -1,13 +1,14 @@
 import React from 'react';
-import { NativeBaseProvider, Box, Center, StatusBar } from "native-base";
-import { useFonts } from "expo-font";
+import { NativeBaseProvider, StatusBar } from "native-base";
 import { Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
-import AppLoading from 'expo-app-loading';
+import { useFonts } from "expo-font";
 
 
 import { THEME } from './styles/theme';
-import { Auth } from './Auth';
 import { Loading } from './components/Loading';
+
+import { Auth } from './screens/Auth';
+import { Home } from './screens/Home';
 
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
         translucent
       />
 
-      {fontsLoaded ? <Auth /> : <Loading />}
+      {fontsLoaded ? <Home /> : <Loading />}
     </NativeBaseProvider>
   );
 

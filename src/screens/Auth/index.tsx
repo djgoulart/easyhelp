@@ -1,12 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
+import { Platform, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Heading, Icon, useTheme, VStack, KeyboardAvoidingView } from 'native-base';
 import { Envelope, Key } from 'phosphor-react-native';
-import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 
-import Logo from '../../assets/logo_primary.svg';
-import { Input } from '../components/Input';
-import { Button } from '../components/Button';
-import { Platform } from 'react-native';
+import Logo from './../../../assets/logo_primary.svg';
+import { Input } from './../../components/Input';
+import { Button } from './../../components/Button';
 
 export function Auth() {
   const theme = useTheme();

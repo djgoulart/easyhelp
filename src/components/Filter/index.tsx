@@ -14,8 +14,8 @@ export function Filter({ title, isActive = false, type, ...rest }: Props) {
   return (
     <Button
       variant={"outline"}
-      borderWidth={isActive ? 1 : 0}
-      borderColor={colorType}
+      borderWidth={1}
+      borderColor={isActive ? colorType : 'gray.700'}
       bgColor="gray.600"
       flex={1}
       size="sm"

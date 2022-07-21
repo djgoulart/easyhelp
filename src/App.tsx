@@ -9,6 +9,7 @@ import { Loading } from './components/Loading';
 
 import { Auth } from './screens/Auth';
 import { Home } from './screens/Home';
+import { Register } from './screens/Register';
 
 
 export default function App() {
@@ -26,7 +27,7 @@ export default function App() {
         translucent
       />
 
-      {fontsLoaded ? <Home /> : <Loading />}
+      {fontsLoaded ? <Register /> : <Loading />}
     </NativeBaseProvider>
   );
 

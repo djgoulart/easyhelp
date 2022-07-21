@@ -7,9 +7,9 @@ import { useFonts } from "expo-font";
 import { THEME } from './styles/theme';
 import { Loading } from './components/Loading';
 
-import { Auth } from './screens/Auth';
-import { Home } from './screens/Home';
-import { Register } from './screens/Register';
+
+import { Routes } from './routes';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 export default function App() {
@@ -21,13 +21,15 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      <StatusBar
-        barStyle='light-content'
-        backgroundColor="transparent"
-        translucent
-      />
+      <NavigationContainer>
+        <StatusBar
+          barStyle='light-content'
+          backgroundColor="transparent"
+          translucent
+        />
 
-      {fontsLoaded ? <Register /> : <Loading />}
+        {fontsLoaded ? <Routes /> : <Loading />}
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 

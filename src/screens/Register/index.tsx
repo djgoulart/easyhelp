@@ -5,7 +5,7 @@ import { Button } from '../../components/Button';
 
 export function Register() {
   return (
-    <VStack flex={1} p={6} backgroundColor="gray.600">
+    <VStack flex={1} p={6} backgroundColor="gray.700">
       <SimpleHeader title='Nova solicitação' />
 
       <Input

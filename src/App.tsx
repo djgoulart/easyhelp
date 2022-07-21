@@ -7,10 +7,7 @@ import { useFonts } from "expo-font";
 import { THEME } from './styles/theme';
 import { Loading } from './components/Loading';
 
-
 import { Routes } from './routes';
-import { NavigationContainer } from '@react-navigation/native';
-
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -21,15 +18,13 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      <NavigationContainer>
-        <StatusBar
-          barStyle='light-content'
-          backgroundColor="transparent"
-          translucent
-        />
+      <StatusBar
+        barStyle='light-content'
+        backgroundColor="transparent"
+        translucent
+      />
 
-        {fontsLoaded ? <Routes /> : <Loading />}
-      </NavigationContainer>
+      {fontsLoaded ? <Routes /> : <Loading />}
     </NativeBaseProvider>
   );
 

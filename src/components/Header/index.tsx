@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { Heading, HStack, IconButton, useTheme, StyledProps } from 'native-base';
 import { CaretLeft, SignOut } from 'phosphor-react-native';
 
@@ -34,6 +35,11 @@ export function Header() {
 
 export function SimpleHeader({ title, ...rest }: SimpleHeaderProps) {
   const { colors } = useTheme();
+  const navigation = useNavigation();
+
+  function handleBack() {
+    navigation.goBack();
+  }
 
   return (
     <HStack
@@ -46,6 +52,7 @@ export function SimpleHeader({ title, ...rest }: SimpleHeaderProps) {
       {...rest}
     >
       <IconButton
+        onPress={handleBack}
         icon={<CaretLeft size={24} color={colors.gray[300]} />}
         _pressed={
           {

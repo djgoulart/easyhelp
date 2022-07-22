@@ -1,16 +1,19 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Heading, HStack, Text, VStack, FlatList, useTheme, Center } from 'native-base';
 import { ChatTeardropText } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
 
 import { Button } from '../../components/Button';
 import { Filter } from '../../components/Filter';
 import { Header } from '../../components/Header';
 import { Order, OrderType } from '../../components/Order';
+import { dateFormat } from '../../utils/firestoreDateFormat';
 
 type FilterType = 'open' | 'closed';
 
 export function Home() {
+  const [isLoading, setIsLoading] = useState(true);
   const [filterActive, setFilterActive] = useState('open');
   const [orders, setOrders] = useState<OrderType[]>([
     {
@@ -35,6 +38,33 @@ export function Home() {
   const handleViewOrder = useCallback((orderId: string) => {
     navigation.navigate('details', { orderId: orderId });
   }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const subscriber = firestore()
+      .collection('orders')
+      .where('status', '==', filterActive)
+      .onSnapshot(snapshot => {
+        const data = snapshot.docs.map(doc => {
+          const { patrimony, description, status, created_at } = doc.data();
+
+          return {
+            id: doc.id,
+            patrimony,
+            description,
+            status,
+            when: dateFormat(created_at)
+          }
+        });
+
+        setOrders(data);
+        setIsLoading(false);
+      });
+
+    return subscriber;
+
+  }, [filterActive]);
 
   return (
     <VStack flex={1} pb={6} bgColor="gray.700" >

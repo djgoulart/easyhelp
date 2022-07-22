@@ -1,11 +1,19 @@
 import { useNavigation } from '@react-navigation/native';
 import { Heading, HStack, IconButton, useTheme, StyledProps } from 'native-base';
 import { CaretLeft, SignOut } from 'phosphor-react-native';
+import auth from '@react-native-firebase/auth';
 
 import Logo from "./../../../assets/logo_secondary.svg";
+import { Alert } from 'react-native';
 
 export type SimpleHeaderProps = StyledProps & {
   title: string;
+}
+
+function handleLogout() {
+  auth()
+    .signOut()
+    .catch(error => Alert.alert("Sair", "Não foi possível sair"));
 }
 
 export function Header() {
@@ -23,6 +31,7 @@ export function Header() {
       <Logo />
 
       <IconButton
+        onPress={handleLogout}
         icon={<SignOut size={26} color={colors.gray[300]} />}
         _pressed={
           {

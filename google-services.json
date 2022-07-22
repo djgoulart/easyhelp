@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "658506851252",
+    "project_id": "easyhelp-5bd50",
+    "storage_bucket": "easyhelp-5bd50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658506851252:android:4be6b760bf1714b66c88e1",
+        "android_client_info": {
+          "package_name": "com.diegojg.easyhelp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658506851252-3bnh12stn33adv6i4uovqau5kotpu58l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAucQ28tjAH6BxYqB8uuaCRwxcF5uU72yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658506851252-3bnh12stn33adv6i4uovqau5kotpu58l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "658506851252-cr3egdnj7r4mva2lsg6mvtel8qhdvk34.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.diegojg.easyhelp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

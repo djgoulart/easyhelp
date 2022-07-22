@@ -1,4 +1,4 @@
-package com.easyhelp;
+package com.diegojg.easyhelp;
 
 import android.os.Build;
 import android.os.Bundle;

@@ -9,20 +9,14 @@ import { Filter } from '../../components/Filter';
 import { Header } from '../../components/Header';
 import { Order, OrderType } from '../../components/Order';
 import { dateFormat } from '../../utils/firestoreDateFormat';
+import { Loading } from '../../components/Loading';
 
 type FilterType = 'open' | 'closed';
 
 export function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [filterActive, setFilterActive] = useState('open');
-  const [orders, setOrders] = useState<OrderType[]>([
-    {
-      id: '159898',
-      patrimony: '123',
-      when: '21/07/2022 às 19:00',
-      status: 'open',
-    }
-  ]);
+  const [orders, setOrders] = useState<OrderType[]>([]);
 
   const { colors } = useTheme()
   const navigation = useNavigation();
@@ -80,7 +74,7 @@ export function Home() {
           <Heading fontSize={"lg"} color={"gray.100"}>
             Solicitações
           </Heading>
-          <Text fontSize={"md"} color={"gray.200"}>3</Text>
+          <Text fontSize={"md"} color={"gray.200"}>{orders.length}</Text>
         </HStack>
 
         <HStack space={3} mb={8}>
@@ -98,25 +92,29 @@ export function Home() {
           />
         </HStack>
 
-        <FlatList
-          data={orders}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => <Order data={item} onPress={() => handleViewOrder(item.id)} />}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 100 }}
-          ListEmptyComponent={() => (
-            <Center>
-              <ChatTeardropText color={colors.gray[300]} size={40} />
-              <Text
-                mt={2}
-                color={colors.gray[300]}
-                textAlign="center">
-                Você ainda não possui {"\n"}solicitações
-                {filterActive === 'open' ? ' em andamento.' : ' finalizadas.'}
-              </Text>
-            </Center>
-          )}
-        />
+        {
+          isLoading
+            ? <Loading />
+            : <FlatList
+              data={orders}
+              keyExtractor={item => item.id}
+              renderItem={({ item }) => <Order data={item} onPress={() => handleViewOrder(item.id)} />}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ paddingBottom: 100 }}
+              ListEmptyComponent={() => (
+                <Center>
+                  <ChatTeardropText color={colors.gray[300]} size={40} />
+                  <Text
+                    mt={2}
+                    color={colors.gray[300]}
+                    textAlign="center">
+                    Você ainda não possui {"\n"}solicitações
+                    {filterActive === 'open' ? ' em andamento.' : ' finalizadas.'}
+                  </Text>
+                </Center>
+              )}
+            />
+        }
 
         <Button title='Nova solicitação' onPress={handleNewOrder} />
       </VStack>

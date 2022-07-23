@@ -42,29 +42,31 @@ export function Register() {
   }
 
   return (
-    <VStack flex={1} p={6} backgroundColor="gray.600">
+    <VStack flex={1} py={6} backgroundColor="gray.600">
       <SimpleHeader title='Nova solicitação' />
 
-      <Input
-        placeholder='Número do patrimônio'
-        mt={4}
-        onChangeText={setPatrimony}
-      />
-      <Input
-        placeholder='Descrição do problema'
-        flex={1}
-        mt={5}
-        multiline
-        textAlignVertical='top'
-        onChangeText={setDescription}
-      />
+      <VStack flex={1} px={6}>
+        <Input
+          placeholder='Número do patrimônio'
+          mt={4}
+          onChangeText={setPatrimony}
+        />
+        <Input
+          placeholder='Descrição do problema'
+          flex={1}
+          mt={5}
+          multiline
+          textAlignVertical='top'
+          onChangeText={setDescription}
+        />
 
-      <Button
-        title='Cadastrar'
-        mt={5}
-        onPress={handleCreateNewOrder}
-        isLoading={isLoading}
-      />
+        <Button
+          title='Cadastrar'
+          mt={5}
+          onPress={handleCreateNewOrder}
+          isLoading={isLoading}
+        />
+      </VStack>
     </VStack>
   );
 }

@@ -58,6 +58,7 @@ export function SimpleHeader({ title, ...rest }: SimpleHeaderProps) {
       bg="gray.600"
       pt={12}
       pb={6}
+      px={6}
       {...rest}
     >
       <IconButton

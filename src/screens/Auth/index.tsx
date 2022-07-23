@@ -23,7 +23,6 @@ export function Auth() {
 
     auth()
       .signInWithEmailAndPassword(email, password)
-      .then(response => console.log(response))
       .catch((error) => {
         setLoading(false);
 

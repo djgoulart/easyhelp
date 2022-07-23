@@ -14,6 +14,7 @@ import { CardDetails } from '../../components/CardDetails';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Alert, Platform } from 'react-native';
+import { DetailsLoading } from '../../components/Loading/DetailsLoading';
 
 type RouteParams = {
   orderId: string;
@@ -90,7 +91,7 @@ export function Details() {
   }, []);
 
   if (isLoading) {
-    return <Loading />
+    return <DetailsLoading />
   }
 
   return (

@@ -10,6 +10,7 @@ import { Header } from '../../components/Header';
 import { Order, OrderType } from '../../components/Order';
 import { dateFormat } from '../../utils/firestoreDateFormat';
 import { Loading } from '../../components/Loading';
+import { ListLoading } from '../../components/Loading/ListLoading';
 
 type FilterType = 'open' | 'closed';
 
@@ -94,7 +95,7 @@ export function Home() {
 
         {
           isLoading
-            ? <Loading />
+            ? <ListLoading />
             : <FlatList
               data={orders}
               keyExtractor={item => item.id}

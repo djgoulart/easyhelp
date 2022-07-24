@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "easyhelp",
-    "slug": "easyhelp",
+    "name": "Infra Help",
+    "slug": "infrahelp",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
@@ -11,11 +11,19 @@
     ],
     "android": {
       "package": "com.diegojg.easyhelp",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "splash": {
+        "image": "./assets/splash.png",
+        "backgroundColor": "#121214"
+      }
     },
     "ios": {
       "bundleIdentifier": "com.diegojg.easyhelp",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "splash": {
+        "image": "./assets/splash.png",
+        "backgroundColor": "#121214"
+      }
     }
   }
 }

@@ -16,6 +16,7 @@
         "image": "./assets/splash.png",
         "backgroundColor": "#121214"
       },
+      "icon": "./assets/icon.png",
       "adaptiveIcon": {
         "backgroundColor": "#121214",
         "backgroundImage": "./assets/icon_background.png",

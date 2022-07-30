@@ -5,7 +5,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
-    <string>Infra Help</string>
+    <string>Tech Help</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -37,7 +37,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>exp+infrahelp</string>
+          <string>exp+techhelp</string>
         </array>
       </dict>
     </array>

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Infra Help",
-    "slug": "infrahelp",
+    "name": "Tech Help",
+    "slug": "techhelp",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
@@ -15,6 +15,11 @@
       "splash": {
         "image": "./assets/splash.png",
         "backgroundColor": "#121214"
+      },
+      "adaptiveIcon": {
+        "backgroundColor": "#121214",
+        "backgroundImage": "./assets/icon_background.png",
+        "foregroundImage": "./assets/icon_foreground.png"
       }
     },
     "ios": {
@@ -23,7 +28,8 @@
       "splash": {
         "image": "./assets/splash.png",
         "backgroundColor": "#121214"
-      }
+      },
+      "icon": "./assets/icon.png"
     }
   }
 }

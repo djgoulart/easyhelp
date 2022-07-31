@@ -7,12 +7,9 @@ import auth from "@react-native-firebase/auth";
 import Logo from './../../../assets/logo_primary.svg';
 import { Input } from './../../components/Input';
 import { Button } from './../../components/Button';
-import { Link } from '../../components/Link';
-import { useNavigation } from '@react-navigation/native';
 
-export function Auth() {
+export function Signup() {
   const theme = useTheme();
-  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -25,25 +22,25 @@ export function Auth() {
     }
 
     auth()
-      .signInWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password)
       .catch((error) => {
         setLoading(false);
 
-        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-passord') {
-          return Alert.alert("Entrar", "E-mail ou senha inválida.");
+        if (error.code === 'auth/email-already-in-use') {
+          return Alert.alert("Cadastro", "O e-mail já está em uso.");
         }
 
         if (error.code === 'auth/invalid-email') {
-          return Alert.alert("Entrar", "E-mail inválido.");
+          return Alert.alert("Cadastro", "E-mail inválido.");
         }
 
-        return Alert.alert("Entrar", "Não foi possível acessar.");
+        if (error.code === 'auth/weak-password') {
+          return Alert.alert("Cadastro", "A senha utilizada é muito fraca.");
+        }
+
+        return Alert.alert("Entrar", "Não foi possível cadastrar.");
       });
   };
-
-  const handleSignUp = () => {
-    navigation.navigate("signup")
-  }
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -51,7 +48,7 @@ export function Auth() {
         <KeyboardAvoidingView w={"full"} h={420} behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
           <VStack flex={1} alignItems="center" px={8}>
             <Logo />
-            <Heading color="gray.100" h={10} fontSize="xl" mt={20} mb={6}>Acesse sua conta</Heading>
+            <Heading color="gray.100" h={12} fontSize="xl" mt={20} mb={6}>Cadastre-se</Heading>
             <Input
               placeholder='E-mail'
               keyboardType='email-address'
@@ -75,19 +72,13 @@ export function Auth() {
               value={password}
             />
             <Button
-              title='Entrar'
+              title='Cadastrar'
               w="full"
               h={12}
+              bgColor="primary.700"
               onPress={handleSubmit}
               isDisabled={(email === '' || password === '')}
               isLoading={loading}
-            />
-            <Link
-              title='Cadastre-se'
-              h={12}
-              w="full"
-              mt={2}
-              onPress={handleSignUp}
             />
           </VStack>
         </KeyboardAvoidingView>

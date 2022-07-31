@@ -27,7 +27,13 @@
         "gradleCommand": ":app:assembleRelease"
       }
     },
-    "production": {}
+    "production": {
+      "releaseChannel": "production",
+      "android": {
+        "buildType": "app-bundle",
+        "autoIncrement": "version"
+      }
+    }
   },
   "submit": {
     "production": {}

@@ -49,7 +49,7 @@ export function Details() {
         closed_at: firestore.FieldValue.serverTimestamp()
       })
       .then(() => {
-        Alert.alert("Registrar", "Solicitação aberta com sucesso.");
+        Alert.alert("Encerrar", "Solicitação encerrada com sucesso.");
         navigation.navigate("home");
       })
       .catch(error => {
@@ -60,34 +60,67 @@ export function Details() {
   };
 
   useEffect(() => {
-    firestore()
+
+    const subscriber = firestore()
       .collection<OrderFirestoreDTO>('orders')
       .doc(orderId)
-      .get()
-      .then((doc) => {
+      .onSnapshot(snapshot => {
         const {
           patrimony,
           description,
+          solution,
           status,
           created_at,
-          closed_at,
-          solution
-        } = doc.data();
+          closed_at
+        } = snapshot.data();
 
+        const id = snapshot.id;
+        const when = dateFormat(created_at);
         const closed = closed_at ? dateFormat(closed_at) : null;
 
         setOrder({
-          id: doc.id,
+          id,
           patrimony,
           description,
           status,
           solution,
-          when: dateFormat(created_at),
+          when,
           closed
         });
 
         setIsLoading(false);
       });
+
+    return subscriber;
+
+    /*     firestore()
+          .collection<OrderFirestoreDTO>('orders')
+          .doc(orderId)
+          .get()
+          .then((doc) => {
+            const {
+              patrimony,
+              description,
+              status,
+              created_at,
+              closed_at,
+              solution
+            } = doc.data();
+    
+            const closed = closed_at ? dateFormat(closed_at) : null;
+    
+            setOrder({
+              id: doc.id,
+              patrimony,
+              description,
+              status,
+              solution,
+              when: dateFormat(created_at),
+              closed
+            });
+    
+            setIsLoading(false);
+          }); */
   }, []);
 
   if (isLoading) {

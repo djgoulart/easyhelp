@@ -2,7 +2,7 @@
   "expo": {
     "name": "Tech Help",
     "slug": "techhelp",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -10,6 +10,7 @@
       "@react-native-firebase/app"
     ],
     "android": {
+      "versionCode": 3,
       "package": "com.diegojg.easyhelp",
       "googleServicesFile": "./google-services.json",
       "splash": {

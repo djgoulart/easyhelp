@@ -117,7 +117,7 @@ export function Home() {
             />
         }
 
-        <Button title='Nova solicitação' onPress={handleNewOrder} />
+        <Button title='Nova solicitação' h={12} onPress={handleNewOrder} />
       </VStack>
     </VStack>
 

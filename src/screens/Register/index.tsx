@@ -63,6 +63,7 @@ export function Register() {
         <Button
           title='Cadastrar'
           mt={5}
+          h={12}
           onPress={handleCreateNewOrder}
           isLoading={isLoading}
         />

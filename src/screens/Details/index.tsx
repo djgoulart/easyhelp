@@ -157,6 +157,7 @@ export function Details() {
         <Button
           title='Finalizar'
           m={5}
+          h={12}
           isLoading={isUpdating}
           onPress={handleCloseOrder}
         />

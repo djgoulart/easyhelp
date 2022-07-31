@@ -3,6 +3,7 @@ import { Heading, HStack, Text, VStack, FlatList, useTheme, Center } from 'nativ
 import { ChatTeardropText } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
+import auth from "@react-native-firebase/auth";
 
 import { Button } from '../../components/Button';
 import { Filter } from '../../components/Filter';
@@ -18,6 +19,8 @@ export function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [filterActive, setFilterActive] = useState('open');
   const [orders, setOrders] = useState<OrderType[]>([]);
+
+  const { uid } = auth().currentUser;
 
   const { colors } = useTheme()
   const navigation = useNavigation();
@@ -40,6 +43,7 @@ export function Home() {
     const subscriber = firestore()
       .collection('orders')
       .where('status', '==', filterActive)
+      .where('author_id', '==', uid)
       .onSnapshot(snapshot => {
         const data = snapshot.docs.map(doc => {
           const { patrimony, description, status, created_at } = doc.data();

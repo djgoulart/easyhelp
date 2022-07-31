@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { VStack } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
+import auth from "@react-native-firebase/auth";
 import { useNavigation } from '@react-navigation/native';
 
 import { SimpleHeader } from '../../components/Header';
@@ -10,11 +11,13 @@ import { Alert } from 'react-native';
 import { Loading } from '../../components/Loading';
 
 export function Register() {
+  const navigation = useNavigation();
+
   const [isLoading, setIsLoading] = useState(false);
   const [patrimony, setPatrimony] = useState('');
   const [description, setDescription] = useState('');
 
-  const navigation = useNavigation();
+  const { uid } = auth().currentUser
 
   function handleCreateNewOrder() {
     if (!patrimony || !description) {
@@ -29,7 +32,8 @@ export function Register() {
         patrimony,
         description,
         status: 'open',
-        created_at: firestore.FieldValue.serverTimestamp()
+        created_at: firestore.FieldValue.serverTimestamp(),
+        author_id: uid
       })
       .then(() => {
         Alert.alert("Registrar", "Solicitação aberta com sucesso.");

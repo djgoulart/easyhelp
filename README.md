@@ -5,7 +5,7 @@ help orders.</p>
 
 <p align="center">
   <br>
-  <a href="" title="Download it on google play store">
+  <a href="https://play.google.com/store/apps/details?id=com.diegojg.easyhelp" title="Download it on google play store">
     <img width="150" src="assets/googleplay.png" alt="Download it on google play store" /> 
   </a>
 </p>
